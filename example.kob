@@ -1,0 +1,16 @@
+fun main() {
+    signal x = 1;
+    derive y = x * 2;
+    
+    x = 2
+
+    e = Effect { 
+        println("{x} * 2 = {y}")
+    }
+
+    y = Task {
+        loop recv subscribe(x) {
+            x * 2
+        }
+    }
+};
